@@ -1,0 +1,65 @@
+{
+  "produtos": [
+    {
+      "nome": "Teclado Mecânico RGB",
+      "preco": 350,
+      "quantidade": 20,
+      "categoria": "Periféricos",
+      "imagem": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "nome": "Mouse Gamer Sem Fio",
+      "preco": 200,
+      "quantidade": 30,
+      "categoria": "Periféricos",
+      "imagem": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500"
+    },
+    {
+      "id": "3",
+      "nome": "Headset Gamer Surround 7.1",
+      "preco": 280.5,
+      "quantidade": 12,
+      "categoria": "Áudio",
+      "imagem": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500"
+    },
+    {
+      "id": "4",
+      "nome": "Monitor UltraWide 29\"",
+      "preco": 1250,
+      "quantidade": 5,
+      "categoria": "Monitores",
+      "imagem": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500"
+    },
+    {
+      "nome": "dadada",
+      "preco": 123,
+      "quantidade": 42,
+      "categoria": "Notebooks",
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_605793-MLA84549859328_052025-F.webp%C2%BF%C2%BFhttps://www.mercadolibre.com.mx/teclado-gamer-gigante-redragon-alien-k605-rgb-teclado-negro-idioma-ingles-us/p/MLM34248184%C2%BF%C2%BFhttps://http2.mlstatic.com/D_NQ_NP_605793-MLA84549859328_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_779632-MLA84549859340_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_852988-MLA84549772470_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_777419-MLA84549742722_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_693265-MLA84549772502_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_748046-MLA84549772522_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_912617-MLA84549742764_052025-F.jpg,https://http2.mlstatic.com/D_NQ_NP_980610-MLA84848081881_052025-F.jpg",
+      "id": "vxBVjZ3wL8U"
+    }
+  ],
+  "adms": [
+    {
+      "id": "1",
+      "nome": "Administrador",
+      "email": "admin@voltix.com",
+      "senha": "AdminDemo2026!"
+    },
+    {
+      "nome": "henrique",
+      "email": "teste@gmail.com",
+      "senha": "123",
+      "id": "GZbFHRRo728"
+    },
+    {
+      "nome": "mateus",
+      "email": "mateus123@gmail.com",
+      "senha": "123",
+      "id": "KZ8KVU9bmwk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
