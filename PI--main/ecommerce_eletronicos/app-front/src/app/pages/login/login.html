@@ -1,8 +1,10 @@
+<!-- Tela para o administrador preencher e enviar os dados de login. -->
 <main class="pagina-login">
   <section class="cartao-login">
     <h1>Entrar como administrador</h1>
     <p>Use seus dados de administrador para continuar.</p>
 
+    <!-- ngSubmit chama entrar() quando o formulário é enviado. -->
     <form (ngSubmit)="entrar()">
       <label for="email">E-mail</label>
       <input
@@ -24,16 +26,17 @@
         required
       />
 
+      <!-- Link para quem ainda precisa criar uma conta. -->
       <button class="botao-cadastro" type="button" routerLink="/cadastro">Criar uma conta</button>
 
+      <!-- O botão fica desativado enquanto o login está sendo conferido. -->
       <button type="submit" [disabled]="carregando">
         {{ carregando ? 'Verificando...' : 'Entrar' }}
       </button>
 
+      <!-- Mostra mensagens de erro, como e-mail ou senha incorretos. -->
       @if (mensagem) {
-        <p [class.sucesso]="mensagemSucesso" [class.erro]="!mensagemSucesso" role="status">
-          {{ mensagem }}
-        </p>
+        <p class="erro" role="status">{{ mensagem }}</p>
       }
     </form>
   </section>

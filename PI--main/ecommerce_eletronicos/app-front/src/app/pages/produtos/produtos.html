@@ -1,3 +1,4 @@
+<!-- Cabeçalho com a marca, navegação e botão para sair. -->
 <main class="pagina-produtos">
   <header class="cabecalho">
     <a class="marca" routerLink="/produtos">Voltix</a>
@@ -8,6 +9,7 @@
     <button class="botao-sair" type="button" (click)="sair()">Sair</button>
   </header>
 
+  <!-- Área principal do catálogo, da busca e dos produtos. -->
   <section class="conteudo">
     <div class="introducao">
       <div>
@@ -15,6 +17,7 @@
         <h1>Produtos</h1>
         <p>Encontre o que você precisa.</p>
       </div>
+      <!-- Campo de busca; o texto digitado fica em termoBusca no TypeScript. -->
       <label class="busca">
         <span class="visualmente-oculto">Buscar produto pelo nome</span>
         <input
@@ -26,6 +29,7 @@
       </label>
     </div>
 
+    <!-- Mostra erro, carregamento ou o conteúdo do catálogo, conforme o estado. -->
     @if (mensagemErro) {
       <p class="erro">{{ mensagemErro }}</p>
     } @else if (carregando) {
@@ -34,6 +38,7 @@
       @if (produtos.length === 0) {
         <p class="estado">Nenhum produto cadastrado.</p>
       } @else {
+        <!-- Cada botão seleciona uma categoria para filtrar os produtos. -->
         <div class="filtros" aria-label="Filtrar por categoria">
           @for (categoria of categorias; track categoria) {
             <button
@@ -47,6 +52,7 @@
           }
         </div>
 
+        <!-- Mostra os produtos que passaram pela busca e pelo filtro de categoria. -->
         @if (produtosFiltrados.length === 0) {
           <p class="estado">Nenhum produto encontrado.</p>
         } @else {

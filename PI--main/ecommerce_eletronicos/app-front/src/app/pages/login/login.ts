@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
+// Dados de administrador recebidos do servidor para conferir o acesso.
 interface Adm {
   id: string;
   nome: string;
@@ -10,6 +11,7 @@ interface Adm {
   senha: string;
 }
 
+// Conecta a lógica do login ao formulário HTML e ao sistema de navegação.
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,31 +19,24 @@ interface Adm {
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login implements OnInit {
+export class Login {
+  // Valores digitados no formulário e mensagens mostradas na tela.
   email = '';
   senha = '';
   mensagem = '';
-  mensagemSucesso = false;
   carregando = false;
 
+  // Ferramentas Angular para consultar o servidor e abrir outra página.
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
 
-  ngOnInit(): void {
-    const cadastroSucesso = sessionStorage.getItem('cadastroSucesso');
-    if (cadastroSucesso) {
-      this.mensagem = cadastroSucesso;
-      this.mensagemSucesso = true;
-      sessionStorage.removeItem('cadastroSucesso');
-    }
-  }
-
+  // Confere o e-mail e a senha com os administradores salvos no servidor.
   entrar(): void {
     this.mensagem = '';
-    this.mensagemSucesso = false;
     this.carregando = true;
 
     this.http.get<Adm[]>('http://localhost:3000/adms').subscribe({
+      // Se a consulta funcionar, procura uma conta com os dados digitados.
       next: (adms) => {
         const admEncontrado = adms.find(
           (adm) =>
@@ -54,8 +49,10 @@ export class Login implements OnInit {
           return;
         }
 
+        // Login válido: abre a página de produtos.
         this.router.navigate(['/produtos']);
       },
+      // Se não conseguir consultar o servidor, mostra uma mensagem de erro.
       error: (erro: unknown) => {
         console.error('Não foi possível consultar os administradores:', erro);
         this.carregando = false;
