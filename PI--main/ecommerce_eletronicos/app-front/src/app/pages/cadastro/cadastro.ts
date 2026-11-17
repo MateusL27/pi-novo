@@ -49,27 +49,33 @@ export class Cadastro {
           return;
         }
 
-        this.http.post<Adm>('http://localhost:3000/adms', {
-          nome,
-          email,
-          senha: this.senha,
-        }).subscribe({
-          next: () => {
-            this.carregando = false;
-            sessionStorage.setItem('cadastroSucesso', 'Conta criada com sucesso. Faça login para acessar.');
-            this.router.navigate(['/login']);
-          },
-          error: (erro: unknown) => {
-            console.error('Não foi possível criar a conta:', erro);
-            this.carregando = false;
-            this.mensagem = 'Não foi possível criar a conta. Tente novamente.';
-          },
-        });
+        this.http
+          .post<Adm>('http://localhost:3000/adms', {
+            nome,
+            email,
+            senha: this.senha,
+          })
+          .subscribe({
+            next: () => {
+              this.carregando = false;
+              sessionStorage.setItem(
+                'cadastroSucesso',
+                'Conta criada com sucesso. Faça login para acessar.',
+              );
+              this.router.navigate(['/login']);
+            },
+            error: (erro: unknown) => {
+              console.error('Não foi possível criar a conta:', erro);
+              this.carregando = false;
+              this.mensagem = 'Não foi possível criar a conta. Tente novamente.';
+            },
+          });
       },
       error: (erro: unknown) => {
         console.error('Não foi possível consultar as contas:', erro);
         this.carregando = false;
-        this.mensagem = 'Não foi possível conectar ao servidor. Verifique se o json-server está iniciado.';
+        this.mensagem =
+          'Não foi possível conectar ao servidor. Verifique se o json-server está iniciado.';
       },
     });
   }

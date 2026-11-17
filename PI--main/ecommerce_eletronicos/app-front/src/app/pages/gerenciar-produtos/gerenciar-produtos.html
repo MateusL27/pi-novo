@@ -31,11 +31,27 @@
         <div class="campos-linha">
           <div>
             <label for="preco">Preço (R$)</label>
-            <input id="preco" name="preco" type="number" min="0" step="0.01" [(ngModel)]="formulario.preco" required />
+            <input
+              id="preco"
+              name="preco"
+              type="number"
+              min="0"
+              step="0.01"
+              [(ngModel)]="formulario.preco"
+              required
+            />
           </div>
           <div>
             <label for="quantidade">Estoque</label>
-            <input id="quantidade" name="quantidade" type="number" min="0" step="1" [(ngModel)]="formulario.quantidade" required />
+            <input
+              id="quantidade"
+              name="quantidade"
+              type="number"
+              min="0"
+              step="1"
+              [(ngModel)]="formulario.quantidade"
+              required
+            />
           </div>
         </div>
 
@@ -43,11 +59,19 @@
         <input id="imagem" name="imagem" type="url" [(ngModel)]="formulario.imagem" required />
 
         <div class="acoes-formulario">
-          <button class="botao-principal" type="submit" [disabled]="salvando || !produtoForm.form.valid">
-            {{ salvando ? 'Salvando...' : (produtoEmEdicao ? 'Salvar alterações' : 'Cadastrar produto') }}
+          <button
+            class="botao-principal"
+            type="submit"
+            [disabled]="salvando || !produtoForm.form.valid"
+          >
+            {{
+              salvando ? 'Salvando...' : produtoEmEdicao ? 'Salvar alterações' : 'Cadastrar produto'
+            }}
           </button>
           @if (produtoEmEdicao) {
-            <button class="botao-secundario" type="button" (click)="cancelarEdicao()">Cancelar</button>
+            <button class="botao-secundario" type="button" (click)="cancelarEdicao()">
+              Cancelar
+            </button>
           }
         </div>
       </form>
@@ -74,7 +98,10 @@
               <article class="item">
                 <div>
                   <h3>{{ produto.nome }}</h3>
-                  <p>{{ produto.categoria }} · {{ produto.preco | currency: 'BRL' }} · {{ produto.quantidade }} em estoque</p>
+                  <p>
+                    {{ produto.categoria }} · {{ produto.preco | currency: 'BRL' }} ·
+                    {{ produto.quantidade }} em estoque
+                  </p>
                 </div>
                 <div class="acoes-item">
                   <button type="button" (click)="editar(produto)">Editar</button>

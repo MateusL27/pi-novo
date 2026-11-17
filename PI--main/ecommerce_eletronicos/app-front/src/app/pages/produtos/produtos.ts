@@ -31,8 +31,8 @@ export class Produtos implements OnInit {
     const termo = this.termoBusca.trim().toLocaleLowerCase();
 
     return this.produtos.filter((produto) => {
-      const correspondeCategoria = this.categoriaSelecionada === 'Todas'
-        || produto.categoria === this.categoriaSelecionada;
+      const correspondeCategoria =
+        this.categoriaSelecionada === 'Todas' || produto.categoria === this.categoriaSelecionada;
       const correspondeNome = produto.nome.toLocaleLowerCase().includes(termo);
 
       return correspondeCategoria && correspondeNome;
@@ -48,7 +48,8 @@ export class Produtos implements OnInit {
       },
       error: (erro: unknown) => {
         console.error('Não foi possível carregar os produtos:', erro);
-        this.mensagemErro = 'Não foi possível carregar os produtos. Verifique se o json-server está iniciado.';
+        this.mensagemErro =
+          'Não foi possível carregar os produtos. Verifique se o json-server está iniciado.';
         this.carregando = false;
         this.changeDetector.markForCheck();
       },
@@ -60,7 +61,6 @@ export class Produtos implements OnInit {
   }
 
   sair(): void {
-    sessionStorage.removeItem('admLogado');
     this.router.navigate(['/login']);
   }
 }

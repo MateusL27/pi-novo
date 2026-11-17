@@ -43,9 +43,9 @@ export class Login implements OnInit {
 
     this.http.get<Adm[]>('http://localhost:3000/adms').subscribe({
       next: (adms) => {
-        const admEncontrado = adms.find((adm) =>
-          adm.email.toLowerCase() === this.email.trim().toLowerCase()
-          && adm.senha === this.senha
+        const admEncontrado = adms.find(
+          (adm) =>
+            adm.email.toLowerCase() === this.email.trim().toLowerCase() && adm.senha === this.senha,
         );
 
         this.carregando = false;
@@ -54,13 +54,13 @@ export class Login implements OnInit {
           return;
         }
 
-        sessionStorage.setItem('admLogado', 'true');
         this.router.navigate(['/produtos']);
       },
       error: (erro: unknown) => {
         console.error('Não foi possível consultar os administradores:', erro);
         this.carregando = false;
-        this.mensagem = 'Não foi possível conectar ao servidor. Verifique se o json-server está iniciado.';
+        this.mensagem =
+          'Não foi possível conectar ao servidor. Verifique se o json-server está iniciado.';
       },
     });
   }

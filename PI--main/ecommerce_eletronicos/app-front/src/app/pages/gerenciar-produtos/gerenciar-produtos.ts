@@ -13,13 +13,7 @@ const novoProdutoVazio = (): DadosProduto => ({
   imagem: '',
 });
 
-const categorias = [
-  'Monitores',
-  'Periféricos',
-  'Áudio',
-  'Smartphones',
-  'Notebooks',
-];
+const categorias = ['Monitores', 'Periféricos', 'Áudio', 'Smartphones', 'Notebooks'];
 
 @Component({
   selector: 'app-gerenciar-produtos',
@@ -57,7 +51,8 @@ export class GerenciarProdutos implements OnInit {
       },
       error: (erro: unknown) => {
         console.error('Não foi possível carregar os produtos:', erro);
-        this.mensagemErro = 'Não foi possível carregar os produtos. Verifique se o json-server está iniciado.';
+        this.mensagemErro =
+          'Não foi possível carregar os produtos. Verifique se o json-server está iniciado.';
         this.carregando = false;
         this.changeDetector.markForCheck();
       },
@@ -70,15 +65,16 @@ export class GerenciarProdutos implements OnInit {
     const nome = this.formulario.nome.trim();
     const categoriaValida = this.categorias.includes(this.formulario.categoria);
     if (
-      !nome
-      || !categoriaValida
-      || !Number.isFinite(this.formulario.preco)
-      || this.formulario.preco < 0
-      || !Number.isInteger(this.formulario.quantidade)
-      || this.formulario.quantidade < 0
-      || !this.formulario.imagem
+      !nome ||
+      !categoriaValida ||
+      !Number.isFinite(this.formulario.preco) ||
+      this.formulario.preco < 0 ||
+      !Number.isInteger(this.formulario.quantidade) ||
+      this.formulario.quantidade < 0 ||
+      !this.formulario.imagem
     ) {
-      this.mensagemErro = 'Preencha todos os campos corretamente. Preço e estoque não podem ser negativos.';
+      this.mensagemErro =
+        'Preencha todos os campos corretamente. Preço e estoque não podem ser negativos.';
       return;
     }
 
@@ -151,7 +147,6 @@ export class GerenciarProdutos implements OnInit {
   }
 
   sair(): void {
-    sessionStorage.removeItem('admLogado');
     this.router.navigate(['/login']);
   }
 }
